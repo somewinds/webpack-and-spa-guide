@@ -30,7 +30,12 @@ module.exports = {
     path: resolve(__dirname, 'dist'),
 
     // 入口 js 的打包输出文件名
-    filename: 'index.js'
+    filename: 'index.js',
+
+    // 设置静态资源的 url 路径前缀
+    output: {
+      publicPath: '/assets/'
+    }
   },
 
   /*
@@ -47,7 +52,7 @@ module.exports = {
         test: /\.js$/,
 
         // 排除 node_modules 目录下的文件，npm 安装的包不需要编译
-        exclude: /node_modules/,
+        exclude: [/node_modules/, /dist/],
 
         /*
       use 指定该文件的 loader, 值可以是字符串或者数组。
@@ -153,8 +158,18 @@ issue：https://github.com/webpack-contrib/webpack-serve/issues/19
 */
 if (dev) {
   module.exports.serve = {
+    host: 'localhost',
     // 配置监听端口，默认值 8080
     port: 7788,
+
+    dev: {
+      /*
+      指定 webpack-dev-middleware 的 publicpath
+      一般情况下与 output.publicPath 保持一致（除非 output.publicPath 使用的是相对路径）
+      https://github.com/webpack/webpack-dev-middleware#publicpath
+      */
+      publicPath: '/assets/'
+    },
 
     // add: 用来给服务器的 koa 实例注入 middleware 增加功能
     add: app => {
@@ -167,7 +182,9 @@ if (dev) {
       http://localhost:8080/index.html
       这个文件
       */
-      app.use(convert(history()))
+      app.use(convert(history({
+        index: '/assets/' // index.html 文件在 /assets/ 路径下
+      })))
     }
   }
 }
