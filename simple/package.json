@@ -1,0 +1,62 @@
+{
+  "name": "webpack-and-spa-guide",
+  "version": "1.0.0",
+  "description": "学习 Webpack 4 和单页应用入门",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-serve webpack.config.js",
+    "build": "webpack-cli",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/somewinds/webpack-and-spa-guide.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/somewinds/webpack-and-spa-guide/issues"
+  },
+  "homepage": "https://github.com/somewinds/webpack-and-spa-guide#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "connect-history-api-fallback": "^1.6.0",
+    "css-loader": "^2.1.0",
+    "eslint": "^5.14.1",
+    "eslint-config-enough": "^0.3.4",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-vue": "^5.2.2",
+    "file-loader": "^3.0.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "koa-connect": "^2.0.1",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3",
+    "webpack-serve": "^2.0.3"
+  },
+  "eslintConfig": {
+    "extends": [
+      "plugin:vue/recommended",
+      "eslint:recommended"
+    ],
+    "env": {
+      "browser": true,
+      "node": true,
+      "es6": true
+    },
+    "parserOptions": {
+      "parser": "babel-eslint",
+      "sourceType": "module"
+    }
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  }
+}
